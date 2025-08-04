@@ -1,0 +1,38 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-m64",
+      "-pthread",
+      "-DOPENFOAM=2506",
+      "-DWM_DP",
+      "-DWM_LABEL_SIZE=32",
+      "-Wall",
+      "-Wextra",
+      "-Wold-style-cast",
+      "-Wnon-virtual-dtor",
+      "-Wno-unused-parameter",
+      "-Wno-invalid-offsetof",
+      "-Wno-attributes",
+      "-Wno-unknown-pragmas",
+      "-O3",
+      "-DNoRepository",
+      "-ftemplate-depth-100",
+      "-I/home/blairmccormick/OpenFOAM/OpenFOAM-v2506/src/finiteVolume/lnInclude",
+      "-I/home/blairmccormick/OpenFOAM/OpenFOAM-v2506/src/meshTools/lnInclude",
+      "-iquote.",
+      "-IlnInclude",
+      "-I/home/blairmccormick/OpenFOAM/OpenFOAM-v2506/src/OpenFOAM/lnInclude",
+      "-I/home/blairmccormick/OpenFOAM/OpenFOAM-v2506/src/OSspecific/POSIX/lnInclude",
+      "-fPIC",
+      "-c",
+      "-o",
+      "Make/linux64GccDPInt32Opt/ticoFoam.o",
+      "ticoFoam.C"
+    ],
+    "directory": "/home/blairmccormick/OpenFOAM/blairmccormick-v2506/run/runTimeFunctionCoupling/ticoFoam",
+    "file": "/home/blairmccormick/OpenFOAM/blairmccormick-v2506/run/runTimeFunctionCoupling/ticoFoam/ticoFoam.C",
+    "output": "/home/blairmccormick/OpenFOAM/blairmccormick-v2506/run/runTimeFunctionCoupling/ticoFoam/Make/linux64GccDPInt32Opt/ticoFoam.o"
+  }
+]

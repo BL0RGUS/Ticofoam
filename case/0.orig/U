@@ -1,0 +1,86 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    wall-4
+    {
+        type            noSlip;
+    }
+
+    velocity-inlet-5
+    {
+        type            codedFixedValue;
+        value           uniform (1 0 0);
+        //this field is mandatory for codedFixedValue, can be whatever
+        name            parabolicInlet;
+        
+        code
+        #{
+            // get vector field of cell faces at this patch (boundary), velocity-inlet-5
+            const vectorField& Cf = patch().Cf();
+            //get velocity vector field
+            vectorField& velo = *this;
+            // iterate through cell faces at boundary
+            forAll(Cf, faceI)
+            {
+                // access the y value and normalise it to [-1, 1] (pipe width is 16.0)
+                const scalar y = (Cf[faceI].y()-8.0)/8.0;
+                // set new velocity value in X-direction to follow parabolic flow
+                const scalar Ux = 1.3*(1.0-y*y);
+                velo[faceI] = vector(Ux, 0, 0);
+            }
+        #};
+ 
+    }
+
+    velocity-inlet-6
+    {
+        type            codedFixedValue;
+        value           uniform (0 3 0);
+        name            oscillatingInlet;
+        code
+        #{
+            // Access the time database
+            const scalar t = this->db().time().value();
+            // set the velocity in the y-direction to oscillate with time
+            const vector inletVelocity = vector(0, 3.0*sqr(sin(0.31415*t)), 0);
+            operator==(inletVelocity);
+        #};   
+    }
+
+    pressure-outlet-7
+    {
+        type            zeroGradient;
+    }
+
+    wall-8
+    {
+        type            noSlip;
+    }
+
+    frontAndBackPlanes
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

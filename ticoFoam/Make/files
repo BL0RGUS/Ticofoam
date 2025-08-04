@@ -1,0 +1,3 @@
+ticoFoam.C
+
+EXE = $(FOAM_APPBIN)/ticoFoam

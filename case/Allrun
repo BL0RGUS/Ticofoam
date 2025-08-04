@@ -1,0 +1,22 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+make
+
+restore0Dir
+
+
+runApplication fluentMeshToFoam \
+    ../resources/elbow.msh
+
+decomposePar -force
+#runApplication $(getApplication)
+
+#mpirun -np 2 ticoFoam -parallel -mpi-split-by-appnum
+
+mpirun -np 2 ticoFoam -parallel -mpi-split-by-appnum : -np 1 ./ping
+
+runApplication reconstructPar
+
+#------------------------------------------------------------------------------
