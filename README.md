@@ -91,7 +91,10 @@ Temperature at time t = 25:
 ![temp1](resources/tempt=25.png)
 
 Temperature at pink boundary point over time:
+![tempGraph](resources/tempGraph.png)
 
+Velocity at inlet over time:
+![veloGraph](resources/velocitytime.png)
 See TempOut.txt for temperature values at the boundary.
 ## Resources
 1. Introduction to Fluid Mechanics: [video](https://www.youtube.com/watch?v=lJM4GuUd3Hk)
