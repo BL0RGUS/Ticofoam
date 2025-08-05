@@ -79,18 +79,28 @@ Once the values are fetched from the interface (and in general we know we won't 
 More examples of using MUI can be found [here](https://github.com/MxUI/MUI-demo/tree/master?tab=readme-ov-file).
 ## Results
 Velocity at time t = 1:
-![velo1](resources/velocityt=1.png)
-Velocity at time t = 25:
-![velo25](resources/velocityt=25.png)
 
+<img src="resources/velocityt=25.png" width="500">
+
+Velocity at time t = 25:
+
+<img src="resources/velocityt=25.png" width="500">
 
 Temperature at time t = 1:
-![temp1](resources/tempt=1.png)
+
+<img src="resources/tempt=1.png" width="500">
 
 Temperature at time t = 25:
-![temp1](resources/tempt=25.png)
+
+<img src="resources/tempt=25.png" width="500">
 
 Temperature at pink boundary point over time:
+
+<img src="resources/tempGraph.png" width="500">
+
+Velocity at oscillating inlet over time:
+
+<img src="resources/velocitytime.png" width="500">
 
 See TempOut.txt for temperature values at the boundary.
 ## Resources
